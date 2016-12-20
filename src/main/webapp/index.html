@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SDK Demo 首页</title>
+    <script src="commons/js/vue2.js"></script>
+    <script src="commons/js/vue-resource.js"></script>
+    <script src="http://sdk.yunhetong.com/sdk/api/yhtapi.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="container">
+    啦啦啦 这里是SDK Demo
+    <br/>
+    服务端返回
+    <div>
+    {{ preResponse }}
+    </div>
+    <br/>
+    生成的合同 id 是
+    <div>{{ contractId }}</div>
+    <br/>
+    token 是 <div> {{ token }}</div>
+    <br/>
+
+
+    <br/>
+    <button @click="getToken()">获取 Token</button>
+    <button @click="createContract()">创建合同</button>
+    <button @click="tokenContract()">获取 Token 并创建合同</button>
+</div>
+
+</body>
+<script type="text/javascript">
+    new Vue({
+        el: "#container",
+        data: {helloWorld: "HelloWorld", token: "未设置", contractId: "还未创建合同", preResponse: ""},
+        methods: {
+            getToken: function () {
+                var vm = this;
+                vm.$http.get('/sdkDemo/token').then(function (response) {
+                    vm.preResponse = response.body;
+                    var body = JSON.parse(response.body);
+                    vm.token = body.value.token;
+                });
+            },
+            createContract: function () {
+                var vm = this;
+                vm.$http.get('/sdkDemo/create_contract').then(function (response) {
+                    vm.preResponse = response.body;
+                    var body = JSON.parse(response.body);
+                    console.log(body);
+                    vm.contractId = body.value.contractId;
+                });
+            },
+            tokenContract: function () {
+                var vm = this;
+                vm.$http.get('/sdkDemo/token_contract').then(function (response) {
+                    vm.preResponse = response.body;
+                    var body = JSON.parse(response.body);
+                    console.log(body);
+                    vm.contractId = body.value.contractId;
+                    vm.token = body.value.token;
+                });
+            }
+        }
+    });
+
+</script>
+</html>

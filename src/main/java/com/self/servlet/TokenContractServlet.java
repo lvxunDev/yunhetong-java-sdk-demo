@@ -1,5 +1,6 @@
 package com.self.servlet;
 
+import com.self.resource.R;
 import com.yunhetong.sdk.LxSDKManager;
 import com.yunhetong.sdk.exception.*;
 
@@ -10,19 +11,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.self.resource.R.getLxSDKManager;
-import static com.self.resource.R.getUserA;
 
 
-public class TokenServlet extends HttpServlet {
-
+public class TokenContractServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+
         LxSDKManager lxSDKManager = getLxSDKManager();
-        String s = "";
+
         try {
-            s = lxSDKManager.getToken(getUserA());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LxEncryptException e) {
+            String s = lxSDKManager.createContract(R.getTestContract(),R.getActor());
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=utf-8");
+            s = lxSDKManager.getTokenWithContract(R.getUserA(),R.getTestContract(),R.getActor());
+            try {
+                response.getWriter().write(s.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }catch (LxEncryptException e) {
             e.printStackTrace();
         } catch (LxKeyException e) {
             e.printStackTrace();
@@ -34,19 +41,11 @@ public class TokenServlet extends HttpServlet {
             e.printStackTrace();
         } catch (LxVerifyException e) {
             e.printStackTrace();
-        }
-
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-
-        try {
-            response.getWriter().write(s.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
-
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);

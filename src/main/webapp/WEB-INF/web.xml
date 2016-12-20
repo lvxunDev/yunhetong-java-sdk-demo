@@ -27,7 +27,7 @@
 
     <servlet>
         <servlet-name>CreateContractServlet</servlet-name>
-        <servlet-class>com.self.servlet.CreateContractServlet</servlet-class>
+        <servlet-class>com.self.servlet.ContractServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateContractServlet</servlet-name>
