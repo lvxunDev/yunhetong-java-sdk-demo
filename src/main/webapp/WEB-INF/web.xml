@@ -69,11 +69,19 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>LastMessageServlet</servlet-name>
+        <servlet-class>com.self.servlet.LastMessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LastMessageServlet</servlet-name>
+        <url-pattern>/last_message</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>MessageReceiveServlet</servlet-name>
         <servlet-class>com.self.servlet.MessageReceiveServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MessageReceiveServlet</servlet-name>
-        <url-pattern>/message_recive</url-pattern>
+        <url-pattern>/message_receive</url-pattern>
     </servlet-mapping>
 </web-app>
