@@ -1,0 +1,79 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>TokenServlet</servlet-name>
+        <servlet-class>com.self.servlet.TokenServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TokenServlet</servlet-name>
+        <url-pattern>/token</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TokenContractServlet</servlet-name>
+        <servlet-class>com.self.servlet.TokenContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TokenContractServlet</servlet-name>
+        <url-pattern>/token_contract</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateContractServlet</servlet-name>
+        <servlet-class>com.self.servlet.ContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateContractServlet</servlet-name>
+        <url-pattern>/create_contract</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <servlet-class>com.self.servlet.UpdateUserInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <url-pattern>/updateUserInfo</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InvalidContractServlet</servlet-name>
+        <servlet-class>com.self.servlet.InvalidContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InvalidContractServlet</servlet-name>
+        <url-pattern>/invalid_contract</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>QueryContractsServlet</servlet-name>
+        <servlet-class>com.self.servlet.QueryContractsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QueryContractsServlet</servlet-name>
+        <url-pattern>/query_contracts</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadContractServlet</servlet-name>
+        <servlet-class>com.self.servlet.DownloadContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadContractServlet</servlet-name>
+        <url-pattern>/download_contract</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MessageReceiveServlet</servlet-name>
+        <servlet-class>com.self.servlet.MessageReceiveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessageReceiveServlet</servlet-name>
+        <url-pattern>/message_recive</url-pattern>
+    </servlet-mapping>
+</web-app>
