@@ -167,7 +167,7 @@
                     window.open(url);
                 }, function failFun(data) {
                     alert(data.code + " || " + data.msg);
-                },/*这个是回调的前端回调的url*/"http://sdk.yunhetong.com");
+                },/*这个是回调的前端回调的url*/"http://sdk.yunhetong.com",/*JSON.stringify()之后的回调参数*/"");
             },
             toContractManager: function () {
                 var vm = this;
