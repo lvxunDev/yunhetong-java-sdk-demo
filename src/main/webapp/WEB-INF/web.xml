@@ -33,7 +33,14 @@
         <servlet-name>CreateContractServlet</servlet-name>
         <url-pattern>/create_contract</url-pattern>
     </servlet-mapping>
-
+    <servlet>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <servlet-class>com.self.servlet.UpdateUserInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUserInfoServlet</servlet-name>
+        <url-pattern>/updateUserInfo</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>InvalidContractServlet</servlet-name>
         <servlet-class>com.self.servlet.InvalidContractServlet</servlet-class>
@@ -53,19 +60,20 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>DownloadContractServlet</servlet-name>
+        <servlet-class>com.self.servlet.DownloadContractServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadContractServlet</servlet-name>
+        <url-pattern>/download_contract</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>MessageReceiveServlet</servlet-name>
         <servlet-class>com.self.servlet.MessageReceiveServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MessageReceiveServlet</servlet-name>
         <url-pattern>/message_recive</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>MessageInfoServlet</servlet-name>
-        <servlet-class>com.self.servlet.MessageInfoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>MessageInfoServlet</servlet-name>
-        <url-pattern>/message_info</url-pattern>
     </servlet-mapping>
 </web-app>
