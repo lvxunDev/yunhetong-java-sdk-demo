@@ -6,7 +6,7 @@
     <script src="commons/js/vue2.js"></script>
     <script src="commons/js/vue-resource.js"></script>
     <script src="http://sdk.yunhetong.com/sdk/api/yhtapi.js" type="text/javascript" charset="utf-8"></script>
-    <script src="http://sdk.yunhetong.com/sdk/api/m/yht.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="http://sdk.yunhetong.com/sdk/api/m/yht.js" type="text/javascript" charset="utf-8"></script>-->
     <style>
         div {
             margin-bottom: 15px;
@@ -31,14 +31,16 @@
     <br/>
     token 是
     <div> {{ token }}</div>
+    解密后的消息 是
+    <div> {{ notice }}</div>
     <br/>
 
 
     要操作用户 Token <input v-model="opt_token" type="text" placeholder="请输入用户Token">
     要操作的合同的id <input v-model="opt_contractId" type="number" placeholder="请输入合同id">
     <br/>
-    <button @click="getToken(A)">获取用户 A 的 Token</button>
-    <button @click="getToken(B)">获取用户 B 的 Token</button>
+    <button @click="getToken('A')">获取用户 A 的 Token</button>
+    <button @click="getToken('B')">获取用户 B 的 Token</button>
     <button @click="createContract()">创建合同</button>
     <button @click="tokenContract()">获取 Token 并创建合同</button>
     <button @click="updateUserInfo()">修改用户信息</button>
@@ -49,7 +51,7 @@
 
     <br/>
     <button @click="toSignManager">去签名管理页面</button>
-    <button @click="toContractManager">合同管理页面</button>
+    <button @click="toContractManager">去合同管理页面</button>
 
 </div>
 
@@ -62,9 +64,10 @@
             helloWorld: "HelloWorld",
             token: "未设置",
             contractId: "还未创建合同",
+            notice: "",
             preResponse: "",
             opt_contractId: "",
-            opt_token: ""
+            opt_token: "",
         },
         computed: {
             opt_description: function () {
@@ -74,7 +77,7 @@
         methods: {
             getToken: function (user) {
                 var vm = this;
-                vm.$http.get('/sdkDemo/token', {body: {user: user}}).then(function (response) {
+                vm.$http.get('/sdkDemo/token', {params: {user: user}}).then(function (response) {
                     vm.preResponse = response.body;
                     var body = JSON.parse(response.body);
                     vm.token = body.value.token;
@@ -132,7 +135,20 @@
                 });
             },
             messageReceive: function () {
-                alert("I'll receive Message");
+                var vm = this;
+                vm.$http.post('/sdkDemo/last_message').then(function (response) {
+                    vm.preResponse = response.body;
+                    var body = JSON.parse(response.body);
+                    // 这个给 Demo 的后台发消息，假装是云合同后台发的
+
+                    vm.$http.post('/sdkDemo/message_receive', {
+                        notice: body.value.notice
+                    }, {emulateJSON: true}).then(function (response) {
+                        vm.notice = response.body;
+                    });
+                });
+
+
             },
             tokenUnableListener: function (obj) { //当token不合法时，SDK会回调此方法
                 var vm = this;
@@ -151,7 +167,7 @@
                     window.open(url);
                 }, function failFun(data) {
                     alert(data.code + " || " + data.msg);
-                });
+                },/*这个是回调的前端回调的url*/"http://sdk.yunhetong.com");
             },
             toContractManager: function () {
                 var vm = this;
