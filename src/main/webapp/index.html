@@ -37,7 +37,8 @@
     要操作用户 Token <input v-model="opt_token" type="text" placeholder="请输入用户Token">
     要操作的合同的id <input v-model="opt_contractId" type="number" placeholder="请输入合同id">
     <br/>
-    <button @click="getToken()">获取 Token</button>
+    <button @click="getToken(A)">获取用户 A 的 Token</button>
+    <button @click="getToken(B)">获取用户 B 的 Token</button>
     <button @click="createContract()">创建合同</button>
     <button @click="tokenContract()">获取 Token 并创建合同</button>
     <button @click="updateUserInfo()">修改用户信息</button>
@@ -71,9 +72,9 @@
             }
         },
         methods: {
-            getToken: function () {
+            getToken: function (user) {
                 var vm = this;
-                vm.$http.get('/sdkDemo/token').then(function (response) {
+                vm.$http.get('/sdkDemo/token', {body: {user: user}}).then(function (response) {
                     vm.preResponse = response.body;
                     var body = JSON.parse(response.body);
                     vm.token = body.value.token;

@@ -1,6 +1,7 @@
 package com.self.servlet;
 
 import com.yunhetong.sdk.LxSDKManager;
+import com.yunhetong.sdk.bean.LxUser;
 import com.yunhetong.sdk.exception.*;
 
 import javax.servlet.ServletException;
@@ -11,15 +12,23 @@ import java.io.IOException;
 
 import static com.self.resource.R.getLxSDKManager;
 import static com.self.resource.R.getUserA;
+import static com.self.resource.R.getUserB;
 
 
 public class TokenServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LxSDKManager lxSDKManager = getLxSDKManager();
+        String whichUser = request.getParameter("user");
         String s = "";
+        LxUser user = null;
+        if ("A".equals(whichUser)) {
+            user = getUserA();
+        } else {
+            user = getUserB();
+        }
         try {
-            s = lxSDKManager.getToken(getUserA());
+            s = lxSDKManager.getToken(user);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (LxEncryptException e) {
@@ -45,7 +54,6 @@ public class TokenServlet extends HttpServlet {
             e.printStackTrace();
         }
     }
-
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
