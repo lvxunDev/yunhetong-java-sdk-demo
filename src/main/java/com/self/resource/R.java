@@ -49,11 +49,12 @@ public class R {
      */
     public static LxUser getUserA() {
         LxUser lxUser = new LxUser();
-        lxUser.setAppUserId("testUserAA")            // 设置用户id
+        lxUser.setAppUserId("javaTestUserAAA")            // 设置用户id
                 .setCertifyNumber("123")                      // 设置证件号码
-                .setUserType(LxUser.UserType.USER)            // 设置用户类型
+                .setUserType(LxUser.UserType.COMPANY)            // 设置用户类型
                 .setPhone("15267131111")                      // 设置手机号码
-                .setUserName("TestA")                          // 设置用户名
+                .setUserName("测试甲有限公司")                          // 设置用户名
+                .setCreateSignature("1")
                 .setCertifyType(LxUser.CertifyType.ID_CARD)   // 设置实名认证类型
         ;
         return lxUser;
@@ -65,11 +66,12 @@ public class R {
      */
     public static LxUser getUserB() {
         LxUser lxUser = new LxUser();
-        lxUser.setAppUserId("testUserBB")            // 设置用户Id
+        lxUser.setAppUserId("javaTestUserBBB")                // 设置用户Id
                 .setCertifyNumber("123")                      // 设置证件号码
                 .setUserType(LxUser.UserType.USER)            // 设置用户类型
                 .setPhone("15267132222")                      // 设置手机号码
-                .setUserName("TestB")                          // 设置用户名
+                .setUserName("测试乙")                          // 设置用户名
+                .setCreateSignature("0")
                 .setCertifyType(LxUser.CertifyType.ID_CARD)   // 设置实名认证类型
         ;
         return lxUser;
