@@ -15,6 +15,7 @@ import java.io.IOException;
 public class TokenContractServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
+
         LxSDKManager lxSDKManager = R.getLxSDKManager();
 
         try {
