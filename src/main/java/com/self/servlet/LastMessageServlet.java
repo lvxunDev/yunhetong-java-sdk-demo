@@ -1,5 +1,6 @@
 package com.self.servlet;
 
+import com.self.resource.R;
 import com.yunhetong.sdk.LxSDKManager;
 import com.yunhetong.sdk.exception.*;
 import com.yunhetong.sdk.util.LxHttpUtil;
@@ -10,13 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.self.resource.testR.getLxSDKManager;
-
 
 public class LastMessageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        LxSDKManager lxSDKManager = getLxSDKManager();
+        LxSDKManager lxSDKManager = R.getLxSDKManager();
 
         String s = "";
         try {

@@ -10,19 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.self.resource.R.getLxSDKManager;
 
 
 public class TokenContractServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
-        LxSDKManager lxSDKManager = getLxSDKManager();
+
+        LxSDKManager lxSDKManager = R.getLxSDKManager();
 
         try {
-            String s = lxSDKManager.createContract(R.getTestContract(),R.getActor());
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");
-            s = lxSDKManager.getTokenWithContract(R.getUserA(),R.getTestContract(),R.getActor());
+            String s = lxSDKManager.getTokenWithContract(R.getUserA(),R.getTestContract(),R.getActor());
             try {
                 response.getWriter().write(s.toString());
             } catch (IOException e) {
