@@ -39,7 +39,7 @@
        <dependency>
             <groupId>com.yunhetong</groupId>
             <artifactId>sdk</artifactId>
-            <version>0.0.2-RELEASE</version>
+            <version>0.0.4-RELEASE</version>
         </dependency>
     </dependencies>
     <build>

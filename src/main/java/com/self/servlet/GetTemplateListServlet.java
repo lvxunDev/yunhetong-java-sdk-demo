@@ -11,15 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-public class LastMessageServlet extends HttpServlet {
+public class GetTemplateListServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         LxSDKManager lxSDKManager = R.getLxSDKManager();
 
         String s = "";
         try {
-            s = lxSDKManager.getLastNotice();
-
+            s = lxSDKManager.queryTemplatelist();
         } catch (LxEncryptException e) {
             e.printStackTrace();
         } catch (LxKeyException e) {
