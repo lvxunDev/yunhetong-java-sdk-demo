@@ -84,4 +84,12 @@
         <servlet-name>MessageReceiveServlet</servlet-name>
         <url-pattern>/message_receive</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>GetTemplateListServlet</servlet-name>
+        <servlet-class>com.self.servlet.GetTemplateListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetTemplateListServlet</servlet-name>
+        <url-pattern>/getTemplateList</url-pattern>
+    </servlet-mapping>
 </web-app>
